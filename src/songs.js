@@ -20,7 +20,7 @@ const songs = [
           artist: "Alexander Rybak",
           coverUrl: "https://example.com/path_to_fairytale_cover.jpg",
           thumbUrl: "https://example.com/path_to_fairytale_thumb.jpg",
-          audio: "/sounds/fairy_tale.mp3",
+          audio: "/sounds/fairy_tail.mp3",
           palette: "coral",
         },
         {
