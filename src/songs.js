@@ -70,6 +70,14 @@ const songs = [
           thumbUrl: "https://example.com/path_to_venom_thumb.jpg",
           audio: "/sounds/Pretty_Little_Baby.mp3",
           palette: "coral",
+        },
+        {
+          title: "We Dont Talk Anymore",
+          artist: "Charlie Puth",
+          coverUrl: "https://example.com/path_to_venom_cover.jpg",
+          thumbUrl: "https://example.com/path_to_venom_thumb.jpg",
+          audio: "/sounds/we_dont_talk_anymore.mp3",
+          palette: "coral",
         }
 ];
 
