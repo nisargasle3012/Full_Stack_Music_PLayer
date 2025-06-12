@@ -65,7 +65,7 @@ const songs = [
         },
         {
           title: "Pretty Little Baby",
-          artist: "Eminem",
+          artist: "Connie Francis",
           coverUrl: "https://example.com/path_to_venom_cover.jpg",
           thumbUrl: "https://example.com/path_to_venom_thumb.jpg",
           audio: "/sounds/Pretty_Little_Baby.mp3",
