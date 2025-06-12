@@ -62,6 +62,14 @@ const songs = [
           thumbUrl: "https://example.com/path_to_venom_thumb.jpg",
           audio: "/sounds/venom.mp3",
           palette: "coral",
+        },
+        {
+          title: "Pretty Little Baby",
+          artist: "Eminem",
+          coverUrl: "https://example.com/path_to_venom_cover.jpg",
+          thumbUrl: "https://example.com/path_to_venom_thumb.jpg",
+          audio: "/sounds/Pretty_Little_Baby.mp3",
+          palette: "coral",
         }
 ];
 
