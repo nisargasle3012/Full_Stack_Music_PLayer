@@ -214,14 +214,19 @@ body {
 
 .slider {
   -webkit-appearance: none;
+  position: absolute;
+  bottom: 30px;
   width: 80%;
   height: 8px;
   border-radius: 5px;
-  background: #dfe6e9;
+  background: #03648d;
   outline: none;
   opacity: 0.8;
   transition: opacity 0.2s;
   margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .slider:hover {
@@ -243,48 +248,4 @@ body {
   border-radius: 50%;
   background: #d19696;
   cursor: pointer;
-}
-
-
-/* 🌐 Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .left, .right {
-        width: 100%;
-        height: auto;
-    }
-
-    .card {
-        width: 90%;
-        margin: 20px auto;
-    }
-
-    .player-name {
-        font-size: 1.5em;
-        bottom: 600px;
-    }
-
-    .song_name h1 {
-        font-size: 1.5em;
-    }
-
-    .song_name p {
-        font-size: 1em;
-    }
-
-    .image {
-        width: 160px;
-        height: 160px;
-        bottom: 250px;
-    }
-
-    .button {
-        height: 40px;
-        width: 40px;
-        font-size: 20px;
-    }
 }
