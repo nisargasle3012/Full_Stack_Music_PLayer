@@ -3,6 +3,7 @@ import songs from '../songs';
 
 function MusicPlayer({ updateCurrentSong, currentSongIndex, setCurrentSongIndex }) {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
   const audioRef = useRef(new Audio());
 
   useEffect(() => {
@@ -43,6 +44,14 @@ function MusicPlayer({ updateCurrentSong, currentSongIndex, setCurrentSongIndex 
     setCurrentSongIndex(newIndex);
   };
 
+  const handleSeek = (e) => {
+    const audio = audioRef.current;
+    const value = e.target.value;
+    const seekTime = (value / 100) * audio.duration;
+    audio.currentTime = seekTime;
+    setProgress(value);
+  };
+
   return (
     <div className="music-player">
       <button className="play-pause button" onClick={togglePlay}>
@@ -54,6 +63,14 @@ function MusicPlayer({ updateCurrentSong, currentSongIndex, setCurrentSongIndex 
       <button className="forward button" onClick={forward}>
         ⏩
       </button>
+      <input
+        type="range"
+        className="slider"
+        value={progress}
+        min="0"
+        max="100"
+        onChange={handleSeek}
+      />
       <audio ref={audioRef} />
       <div className={`image ${isPlaying ? 'spinning-element' : ''}`}>
         <img src="R.png" alt="Description of image" />
