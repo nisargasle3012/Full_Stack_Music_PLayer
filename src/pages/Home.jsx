@@ -1,10 +1,11 @@
-//App.jsx
 import React, { useState } from 'react';
-import MusicPlayer from './MusicPlayer';
-import CardWrapper from './CardWrapper';
+import MusicPlayer from '../components/MusicPlayer';
+import CardWrapper from '../components/CardWrapper';
 import songs from '../songs';
+import '../styles/Home.css';
+import { Link } from 'react-router-dom';
 
-function App() {
+function Home() {
   const [currentSong, setCurrentSong] = useState({
     title: songs[0].title,
     artist: songs[0].artist,
@@ -17,6 +18,8 @@ function App() {
 
   return (
     <div className="container">
+      
+
       <div className="left">
         {songs.map((song, index) => (
           <CardWrapper
@@ -45,4 +48,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;

@@ -1,0 +1,51 @@
+﻿music-player/
+├── public/
+│   ├── sounds/               # Static audio files
+│   │   ├── believer.mp3
+│   │   └── ...
+│   ├── R.png                 # Static image
+│   └── index.html            # React root HTML
+
+
+├── src/
+│   ├── assets/               # Static imports used in code (e.g., icons, images, fonts)
+│   │   └── R.png             # (if you prefer importing over using public)
+│
+│   ├── components/           # Reusable UI components
+│   │   ├── MusicPlayer.jsx
+│   │   ├── Card.jsx
+│   │   ├── CardWrapper.jsx
+│   │   └── Auth/
+│   │       ├── Login.jsx
+│   │       └── Signup.jsx
+│
+│   ├── pages/                # Page-level components (if using React Router)
+│   │   ├── Home.jsx
+│   │   └── Profile.jsx
+│
+│   ├── context/              # React context (AuthContext, ThemeContext, etc.)
+│   │   └── AuthContext.js
+│
+│   ├── hooks/                # Custom hooks
+│   │   └── useAuth.js
+│
+│   ├── utils/                # Utility functions
+│   │   └── formatTime.js
+│
+│   ├── styles/               # CSS files or modules
+│   │   ├── styles.css        # Global CSS
+│   │   ├── MusicPlayer.css   # (optional) component-scoped styling
+│   │   └── Card.css
+│
+│   ├── services/             # API functions (like login, signup, etc.)
+│   │   └── api.js
+│
+│   ├── App.jsx
+│   ├── songs.js
+│   └── index.js
+
+
+├── .gitignore
+├── package.json
+├── README.md
+└── vite.config.js / webpack.config.js  # if using Vite/Webpack

@@ -1,0 +1,20 @@
+.info-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.heading {
+  text-align: center;
+  font-size: 2em;
+  color: #291a1a;
+  margin: 20px 0 30px;
+}
+
+.info {
+  margin: 100px 0;
+  color: #000000;
+  font-size: medium;
+  font-style: italic;
+}

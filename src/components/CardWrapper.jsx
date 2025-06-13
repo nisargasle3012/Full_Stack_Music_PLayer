@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './Card';
+import '../styles/Cardwrapper.css';
 
 function CardWrapper({ contact, updateCurrentSong, setCurrentSongIndex, songIndex }) {
   const handleCardClick = () => {

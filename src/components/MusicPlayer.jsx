@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import songs from '../songs';
+import '../styles/MusicPlayer.css';
+import assetImage from '../assets/R.png';
+import { Link } from 'react-router-dom'; 
 
 function MusicPlayer({ updateCurrentSong, currentSongIndex, setCurrentSongIndex }) {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -87,7 +90,7 @@ function MusicPlayer({ updateCurrentSong, currentSongIndex, setCurrentSongIndex 
         const currentProgress = (audio.currentTime / audio.duration) * 100;
         setProgress(currentProgress);
       }
-    }, 1); // update every 0.5 seconds
+    }, 500); // update every 0.5 seconds
 
     return () => clearInterval(interval);
   }, [isPlaying]);
@@ -95,6 +98,10 @@ function MusicPlayer({ updateCurrentSong, currentSongIndex, setCurrentSongIndex 
 
   return (
     <div className="music-player">
+      <div className="top-right-link">
+        <Link to="/" style={{ marginRight: '10px' }}>Login</Link> 
+      </div>
+
       <button className="play-pause button" onClick={togglePlay}>
         {isPlaying ? <span>⏸</span> : <span>▶️</span>}
       </button>
@@ -118,7 +125,7 @@ function MusicPlayer({ updateCurrentSong, currentSongIndex, setCurrentSongIndex 
 
       <audio ref={audioRef} />
       <div className={`image ${isPlaying ? 'spinning-element' : ''}`}>
-        <img src="R.png" alt="Description of image" />
+        <img src={assetImage} alt="Description of image" />
       </div>
     </div>
   );
