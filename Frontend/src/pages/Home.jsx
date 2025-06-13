@@ -27,20 +27,6 @@ function Home() {
 
   return (
     <div className="container">
-      {/* Top Right Controls: Logout + Profile Link */}
-      <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px', padding: '10px' }}>
-        <span style={{ alignSelf: 'center', marginRight: 'auto', fontWeight: 'bold' }}>
-          Welcome, {user?.name} 🎵
-        </span>
-
-        <Link to="/profile" style={{ textDecoration: 'none', padding: '6px 12px', backgroundColor: '#ccc', borderRadius: '5px' }}>
-          Go to Profile
-        </Link>
-
-        <button onClick={handleLogout} style={{ padding: '6px 12px', cursor: 'pointer' }}>
-          Logout
-        </button>
-      </div>
 
       {/* Left: Song Cards */}
       <div className="left">
@@ -62,6 +48,15 @@ function Home() {
           currentSongIndex={currentSongIndex}
           setCurrentSongIndex={setCurrentSongIndex}
         />
+        <span className='user_name'>
+          Welcome, {user?.name} 🎵
+        </span>
+        <Link className='profile_link'>
+          Profile
+        </Link>
+        <button className='logout_btn' onClick={handleLogout}>
+          Logout
+        </button>
         <div className="player-name">Geet Music Player</div>
         <div className="song_name">
           <h1>{currentSong.title}</h1>
