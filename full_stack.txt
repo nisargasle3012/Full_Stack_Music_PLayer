@@ -1,0 +1,9 @@
+music-player/
+├── client/        ← your React frontend (move public/, src/, etc. here)
+│   ├── public/
+│   ├── src/
+│   └── ...       
+├── server/        ← your backend server (Express + MongoDB)
+│   ├── index.js
+│   └── ...
+├── package.json   ← (for root-level metadata if needed)
