@@ -44,6 +44,20 @@ function MusicPlayer({ updateCurrentSong, currentSongIndex, setCurrentSongIndex 
     setCurrentSongIndex(newIndex);
   };
 
+  useEffect(() => {
+    const audio = audioRef.current;
+
+    const handleEnded = () => {
+      forward(); // Play next song
+    };
+
+    audio.addEventListener('ended', handleEnded);
+
+    return () => {
+      audio.removeEventListener('ended', handleEnded);
+    };
+  }, [currentSongIndex, isPlaying]);
+
   const handleSeek = (e) => {
     const audio = audioRef.current;
     const value = e.target.value;
