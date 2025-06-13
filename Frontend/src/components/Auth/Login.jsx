@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import '../../styles/Auth.css';
 import { useAuth } from '../../hooks/useAuth';
+import Home from '../../pages/Home';
 
 const Login = () => {
   const [formData, setFormData] = useState({
