@@ -98,10 +98,6 @@ function MusicPlayer({ updateCurrentSong, currentSongIndex, setCurrentSongIndex 
 
   return (
     <div className="music-player">
-      <div className="top-right-link">
-        <Link to="/" style={{ marginRight: '10px' }}>Login</Link> 
-      </div>
-
       <button className="play-pause button" onClick={togglePlay}>
         {isPlaying ? <span>⏸</span> : <span>▶️</span>}
       </button>
