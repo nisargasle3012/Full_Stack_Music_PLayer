@@ -4,6 +4,8 @@ import songs from '../songs';
 function MusicPlayer({ updateCurrentSong, currentSongIndex, setCurrentSongIndex }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
   const audioRef = useRef(new Audio());
 
   useEffect(() => {
@@ -13,6 +15,12 @@ function MusicPlayer({ updateCurrentSong, currentSongIndex, setCurrentSongIndex 
     }
     updateCurrentSong(songs[currentSongIndex].title, songs[currentSongIndex].artist);
   }, [currentSongIndex]);
+
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+  };
 
   const togglePlay = () => {
     setIsPlaying(prevIsPlaying => {
@@ -74,10 +82,12 @@ function MusicPlayer({ updateCurrentSong, currentSongIndex, setCurrentSongIndex 
     const interval = setInterval(() => {
       const audio = audioRef.current;
       if (isPlaying && audio.duration) {
+        setCurrentTime(audio.currentTime);
+        setDuration(audio.duration); 
         const currentProgress = (audio.currentTime / audio.duration) * 100;
         setProgress(currentProgress);
       }
-    }, 100); // update every 0.5 seconds
+    }, 1); // update every 0.5 seconds
 
     return () => clearInterval(interval);
   }, [isPlaying]);
@@ -102,6 +112,10 @@ function MusicPlayer({ updateCurrentSong, currentSongIndex, setCurrentSongIndex 
         max="100"
         onChange={handleSeek}
       />
+      <div className="time-display">
+        <span>{formatTime(currentTime)}</span> / <span>{formatTime(duration)}</span>
+      </div>
+
       <audio ref={audioRef} />
       <div className={`image ${isPlaying ? 'spinning-element' : ''}`}>
         <img src="R.png" alt="Description of image" />

@@ -247,3 +247,15 @@ body {
   cursor: pointer;
 }
 
+.time-display {
+  position: absolute;
+  bottom: 25px;
+  left: 28%;
+  font-size: 14px;
+  margin-top: 4px;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
