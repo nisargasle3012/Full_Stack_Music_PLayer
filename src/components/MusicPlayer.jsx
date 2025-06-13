@@ -31,6 +31,7 @@ function MusicPlayer({ updateCurrentSong, currentSongIndex, setCurrentSongIndex 
     }
     const newIndex = (currentSongIndex + 1) % songs.length;
     setCurrentSongIndex(newIndex);
+    setProgress(0);
   };
 
   const backward = () => {
@@ -42,21 +43,24 @@ function MusicPlayer({ updateCurrentSong, currentSongIndex, setCurrentSongIndex 
       newIndex = songs.length - 1;
     }
     setCurrentSongIndex(newIndex);
+    setProgress(0);
   };
 
   useEffect(() => {
-    const audio = audioRef.current;
+    const audio1 = audioRef.current;
 
     const handleEnded = () => {
-      forward(); // Play next song
+      forward();
     };
 
-    audio.addEventListener('ended', handleEnded);
+    setProgress(0);
+
+    audio1.addEventListener('ended', handleEnded);
 
     return () => {
-      audio.removeEventListener('ended', handleEnded);
+      audio1.removeEventListener('ended', handleEnded);
     };
-  }, [currentSongIndex, isPlaying]);
+  }, [currentSongIndex]);
 
   const handleSeek = (e) => {
     const audio = audioRef.current;
@@ -65,6 +69,19 @@ function MusicPlayer({ updateCurrentSong, currentSongIndex, setCurrentSongIndex 
     audio.currentTime = seekTime;
     setProgress(value);
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const audio = audioRef.current;
+      if (isPlaying && audio.duration) {
+        const currentProgress = (audio.currentTime / audio.duration) * 100;
+        setProgress(currentProgress);
+      }
+    }, 100); // update every 0.5 seconds
+
+    return () => clearInterval(interval);
+  }, [isPlaying]);
+
 
   return (
     <div className="music-player">
