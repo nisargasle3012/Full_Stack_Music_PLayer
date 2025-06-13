@@ -22,6 +22,15 @@ body {
   scrollbar-color: #d19696 #dfe6e9;
 }
 
+.top_left {
+  width: 400px;
+  height: 100px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 4px solid #d19696;
+  border-radius: 25px;
+}
+
 .right {
   height: 700px;
   width: 1030px;
@@ -38,9 +47,26 @@ body {
   flex-direction: column;
 }
 
-.top-right-link {
+.user_name {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 20px;
+}
+
+.profile_link {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  position: absolute;
+  top: 20px;
+  right: 80px;
+  font-size: 20px;
+}
+
+.logout_btn {
+  padding: '6px 12px';
+  cursor: 'pointer';
   position: absolute;
   top: 20px;
   right: 20px;
 }
-
