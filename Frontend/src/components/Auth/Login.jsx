@@ -56,7 +56,6 @@ const Login = () => {
 
       <div style={{ margin: '20px' }}>
         <Link to="/Signup" style={{ marginRight: '10px' }}>Signup</Link>
-        <Link to="/Home">Home</Link>
       </div>
     </div>
   );
