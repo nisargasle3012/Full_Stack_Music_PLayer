@@ -27,7 +27,7 @@ const Login = () => {
   setMessage('');
   setLoading(true);
   try {
-    const res = await axios.post('http://localhost:5000/api/login', formData);
+    const res = await axios.post('https://full-stack-music-player.onrender.com/api/signup', formData);
     setMessage(res.data.message);
 
     setUser(res.data.user); // Save user data
