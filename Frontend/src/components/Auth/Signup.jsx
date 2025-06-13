@@ -25,7 +25,7 @@ const Signup = () => {
     setMessage('');
 
     try {
-      const res = await axios.post('http://localhost:5000/api/signup', formData);
+      const res = await axios.post('https://full-stack-music-player.onrender.com/api/signup', formData);
       setMessage(res.data.message);
       navigate('/'); // Redirect to Login page after signup
     } catch (error) {
