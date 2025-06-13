@@ -3,47 +3,48 @@
 │   ├── sounds/               # Static audio files
 │   │   ├── believer.mp3
 │   │   └── ...
-│   ├── R.png                 # Static image
+│   ├── R.png                 # Static image (optional — move to assets if imported in JSX)
 │   └── index.html            # React root HTML
 
-
 ├── src/
-│   ├── assets/               # Static imports used in code (e.g., icons, images, fonts)
-│   │   └── R.png             # (if you prefer importing over using public)
-│
-│   ├── components/           # Reusable UI components
+│   ├── assets/               # Static imports used in code
+│   │   └── R.png             # Imported in components (recommended over public)
+
+│   ├── components/           
 │   │   ├── MusicPlayer.jsx
 │   │   ├── Card.jsx
 │   │   ├── CardWrapper.jsx
 │   │   └── Auth/
 │   │       ├── Login.jsx
 │   │       └── Signup.jsx
-│
-│   ├── pages/                # Page-level components (if using React Router)
-│   │   ├── Home.jsx
-│   │   └── Profile.jsx
-│
-│   ├── context/              # React context (AuthContext, ThemeContext, etc.)
-│   │   └── AuthContext.js
-│
-│   ├── hooks/                # Custom hooks
-│   │   └── useAuth.js
-│
-│   ├── utils/                # Utility functions
-│   │   └── formatTime.js
-│
-│   ├── styles/               # CSS files or modules
-│   │   ├── styles.css        # Global CSS
-│   │   ├── MusicPlayer.css   # (optional) component-scoped styling
-│   │   └── Card.css
-│
-│   ├── services/             # API functions (like login, signup, etc.)
-│   │   └── api.js
-│
-│   ├── App.jsx
-│   ├── songs.js
-│   └── index.js
 
+│   ├── pages/                
+│   │   ├── Home.jsx
+│   │   └── Profile.jsx       # (or Dashboard.jsx, depending on your feature)
+
+│   ├── context/              
+│   │   └── AuthContext.js
+
+│   ├── hooks/                
+│   │   └── useAuth.js
+
+│   ├── utils/                
+│   │   └── formatTime.js     # e.g., convert seconds to mm:ss
+
+│   ├── styles/
+│   │   ├── App.css           # General layout styling (body, root div, fonts)
+│   │   ├── Card.css          # Styles specific to Card.jsx
+│   │   ├── CardWrapper.css   # Styles for CardWrapper.jsx
+│   │   ├── MusicPlayer.css   # Player-specific styles
+│   │   ├── HomePage.css      # For Home.jsx
+│   │   └── Auth.css          # For Login.jsx and Signup.jsx forms
+
+│   ├── services/             # API calls (signup, login, getUser)
+│   │   └── api.js
+
+│   ├── App.jsx               # Main app routing/layout
+│   ├── songs.js              # Song data array (can later be fetched from DB)
+│   └── index.js              # ReactDOM render
 
 ├── .gitignore
 ├── package.json
