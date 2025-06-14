@@ -26,7 +26,7 @@ const Signup = () => {
 
     try {
       const res = await axios.post(
-        'http://localhost:5000/api/signup',
+        'https://full-stack-music-player.onrender.com/api/signup',
         formData
       );
       setMessage(res.data.message);
