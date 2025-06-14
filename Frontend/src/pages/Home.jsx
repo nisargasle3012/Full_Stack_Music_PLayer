@@ -4,7 +4,8 @@ import MusicPlayer from '../components/MusicPlayer';
 import CardWrapper from '../components/CardWrapper';
 import songs from '../songs';
 import '../styles/Home.css';
-import { useAuth } from '../hooks/useAuth'; // Import useAuth
+import { useAuth } from '../hooks/useAuth';
+import Profile from './Profile'; // Update the path accordingly
 
 function Home() {
   const [currentSong, setCurrentSong] = useState({
@@ -12,17 +13,18 @@ function Home() {
     artist: songs[0].artist,
   });
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
+  const [showProfile, setShowProfile] = useState(false);
 
   const navigate = useNavigate();
-  const { user, setUser } = useAuth(); // Destructure from context
+  const { user, setUser } = useAuth();
 
   const updateCurrentSong = (title, artist) => {
     setCurrentSong({ title, artist });
   };
 
   const handleLogout = () => {
-    setUser(null); // Clear user from context
-    navigate('/'); // Redirect to login
+    setUser(null);
+    navigate('/');
   };
 
   return (
@@ -51,9 +53,8 @@ function Home() {
         <span className='user_name'>
           Welcome, {user?.name} 🎵
         </span>
-        <Link className='profile_link'>
-          Profile
-        </Link>
+        <button className='profile_btn' onClick={() => setShowProfile(true)}>Go to Profile</button>
+        <Profile showProfile={showProfile} setShowProfile={setShowProfile} />
         <button className='logout_btn' onClick={handleLogout}>
           Logout
         </button>
