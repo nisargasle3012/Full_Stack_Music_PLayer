@@ -10,7 +10,7 @@ function Profile({ showProfile, setShowProfile }) {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:5000/api/profile', {
+        const res = await axios.get('https://full-stack-music-player.onrender.com/api/profile', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
