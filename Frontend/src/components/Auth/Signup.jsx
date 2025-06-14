@@ -2,17 +2,15 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import '../../styles/Auth.css';
-import { useAuth } from '../../hooks/useAuth';
 
-const Login = () => {
+const Signup = () => {
   const [formData, setFormData] = useState({
+    name: '',
     email: '',
     password: ''
   });
 
-  const { setUser } = useAuth();
   const [message, setMessage] = useState('');
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -25,43 +23,36 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage('');
-    setLoading(true);
 
     try {
-      const res = await axios.post('https://full-stack-music-player.onrender.com/api/signup', formData);
-
+      const res = await axios.post(
+        'http://localhost:5000/api/signup',
+        formData
+      );
       setMessage(res.data.message);
-
-      // Save token and set user
-      localStorage.setItem('token', res.data.token);
-      setUser(res.data.user);
-
-      navigate('/Home');
+      navigate('/'); // Redirect to Login page after signup
     } catch (error) {
-      setMessage(error.response?.data?.error || 'Login failed');
-    } finally {
-      setLoading(false);
+      setMessage(error.response?.data?.error || 'Signup failed');
     }
   };
 
   return (
     <div className="auth-container">
-      <h2>Login</h2>
+      <h2>Signup</h2>
       <form onSubmit={handleSubmit}>
-        <input type="email" name="email" placeholder="Email" onChange={handleChange} required autoFocus />
+        <input type="text" name="name" placeholder="Name" onChange={handleChange} required /><br />
+        <input type="email" name="email" placeholder="Email" onChange={handleChange} required /><br />
         <input type="password" name="password" placeholder="Password" onChange={handleChange} required /><br />
-        <button type="submit" disabled={loading}>
-          {loading ? 'Logging in...' : 'Login'}
-        </button>
+        <button type="submit">Signup</button>
       </form>
 
       {message && <p style={{ marginTop: '10px' }}>{message}</p>}
 
       <div style={{ margin: '20px' }}>
-        <Link to="/Signup">Signup</Link>
+        <Link to="/">Login</Link>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Signup;
