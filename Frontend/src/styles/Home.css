@@ -55,18 +55,28 @@ body {
   font-size: 20px;
 }
 
-.profile_link {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+.logout_btn {
+  padding: 6px 12px;
+  margin-top: 10px;
+  margin-right: 10px;
+  background-color: #eee;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
   position: absolute;
-  top: 20px;
-  right: 80px;
-  font-size: 20px;
+  top: 15px;
+  right: 20px;
 }
 
-.logout_btn {
-  padding: '6px 12px';
-  cursor: 'pointer';
+.profile_btn {
+  padding: 6px 12px;
+  margin-top: 10px;
+  margin-right: 10px;
+  background-color: #eee;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 15px;
+  right: 100px;
 }
