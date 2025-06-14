@@ -1,0 +1,36 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 99;
+  opacity: 0.3;
+}
+
+.profile-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 20vw;
+  height: 100vh;
+  background-color: rgba(188, 203, 95, 0.97);
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  padding: 30px;
+  transition: transform 0.3s ease-in-out;
+  overflow-y: auto;
+  border-radius: 25px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+}
