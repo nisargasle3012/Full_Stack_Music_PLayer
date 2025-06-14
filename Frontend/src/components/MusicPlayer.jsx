@@ -90,7 +90,7 @@ function MusicPlayer({ updateCurrentSong, currentSongIndex, setCurrentSongIndex 
         const currentProgress = (audio.currentTime / audio.duration) * 100;
         setProgress(currentProgress);
       }
-    }, 500); // update every 0.5 seconds
+    }, 100); // update every 0.5 seconds
 
     return () => clearInterval(interval);
   }, [isPlaying]);
