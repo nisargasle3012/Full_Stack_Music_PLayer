@@ -4,7 +4,8 @@ import MusicPlayer from '../components/MusicPlayer';
 import CardWrapper from '../components/CardWrapper';
 import songs from '../songs';
 import '../styles/Home.css';
-import { useAuth } from '../hooks/useAuth'; // Import useAuth
+import { useAuth } from '../hooks/useAuth';
+import Profile from './Profile'; // Update the path accordingly
 
 function Home() {
   const [currentSong, setCurrentSong] = useState({
@@ -12,35 +13,22 @@ function Home() {
     artist: songs[0].artist,
   });
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
+  const [showProfile, setShowProfile] = useState(false);
 
   const navigate = useNavigate();
-  const { user, setUser } = useAuth(); // Destructure from context
+  const { user, setUser } = useAuth();
 
   const updateCurrentSong = (title, artist) => {
     setCurrentSong({ title, artist });
   };
 
   const handleLogout = () => {
-    setUser(null); // Clear user from context
-    navigate('/'); // Redirect to login
+    setUser(null);
+    navigate('/');
   };
 
   return (
     <div className="container">
-      {/* Top Right Controls: Logout + Profile Link */}
-      <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px', padding: '10px' }}>
-        <span style={{ alignSelf: 'center', marginRight: 'auto', fontWeight: 'bold' }}>
-          Welcome, {user?.name} 🎵
-        </span>
-
-        <Link to="/profile" style={{ textDecoration: 'none', padding: '6px 12px', backgroundColor: '#ccc', borderRadius: '5px' }}>
-          Go to Profile
-        </Link>
-
-        <button onClick={handleLogout} style={{ padding: '6px 12px', cursor: 'pointer' }}>
-          Logout
-        </button>
-      </div>
 
       {/* Left: Song Cards */}
       <div className="left">
@@ -62,6 +50,14 @@ function Home() {
           currentSongIndex={currentSongIndex}
           setCurrentSongIndex={setCurrentSongIndex}
         />
+        <span className='user_name'>
+          Welcome, {user?.name} 🎵
+        </span>
+        <button className='profile_btn' onClick={() => setShowProfile(true)}>Go to Profile</button>
+        <Profile showProfile={showProfile} setShowProfile={setShowProfile} />
+        <button className='logout_btn' onClick={handleLogout}>
+          Logout
+        </button>
         <div className="player-name">Geet Music Player</div>
         <div className="song_name">
           <h1>{currentSong.title}</h1>

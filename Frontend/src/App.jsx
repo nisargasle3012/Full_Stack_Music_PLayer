@@ -11,12 +11,6 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <div style={{ margin: '20px' }}>
-          <Link to="/" style={{ marginRight: '10px' }}>Login</Link>
-          <Link to="/signup" style={{ marginRight: '10px' }}>Signup</Link>
-          <Link to="/home">Home</Link> 
-        </div>
-
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Signup />} />

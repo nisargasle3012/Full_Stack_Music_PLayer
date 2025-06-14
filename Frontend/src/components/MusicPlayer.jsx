@@ -90,7 +90,7 @@ function MusicPlayer({ updateCurrentSong, currentSongIndex, setCurrentSongIndex 
         const currentProgress = (audio.currentTime / audio.duration) * 100;
         setProgress(currentProgress);
       }
-    }, 500); // update every 0.5 seconds
+    }, 100); // update every 0.5 seconds
 
     return () => clearInterval(interval);
   }, [isPlaying]);
@@ -98,10 +98,6 @@ function MusicPlayer({ updateCurrentSong, currentSongIndex, setCurrentSongIndex 
 
   return (
     <div className="music-player">
-      <div className="top-right-link">
-        <Link to="/" style={{ marginRight: '10px' }}>Login</Link> 
-      </div>
-
       <button className="play-pause button" onClick={togglePlay}>
         {isPlaying ? <span>⏸</span> : <span>▶️</span>}
       </button>
