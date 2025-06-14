@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import '../../styles/Auth.css';
 import { useAuth } from '../../hooks/useAuth';
-import Home from '../../pages/Home';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +10,7 @@ const Login = () => {
     password: ''
   });
 
-  const { setUser } = useAuth(); // Add inside component
+  const { setUser } = useAuth();
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -24,22 +23,27 @@ const Login = () => {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  setMessage('');
-  setLoading(true);
-  try {
-    const res = await axios.post('https://full-stack-music-player.onrender.com/api/login', formData);
-    setMessage(res.data.message);
+    e.preventDefault();
+    setMessage('');
+    setLoading(true);
 
-    setUser(res.data.user); // Save user data
-    navigate('/Home');
-  } catch (error) {
-    setMessage(error.response?.data?.error || 'Login failed');
-  }
-    finally {
-    setLoading(false);
-  }
-};
+    try {
+      const res = await axios.post('https://full-stack-music-player.onrender.com/api/login', formData);
+
+      setMessage(res.data.message);
+
+      // Save token and set user
+      localStorage.setItem('token', res.data.token);
+      setUser(res.data.user);
+
+      navigate('/Home');
+    } catch (error) {
+      setMessage(error.response?.data?.error || 'Login failed');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="auth-container">
       <h2>Login</h2>
@@ -49,13 +53,12 @@ const Login = () => {
         <button type="submit" disabled={loading}>
           {loading ? 'Logging in...' : 'Login'}
         </button>
-
       </form>
 
       {message && <p style={{ marginTop: '10px' }}>{message}</p>}
 
       <div style={{ margin: '20px' }}>
-        <Link to="/Signup" style={{ marginRight: '10px' }}>Signup</Link>
+        <Link to="/Signup">Signup</Link>
       </div>
     </div>
   );
